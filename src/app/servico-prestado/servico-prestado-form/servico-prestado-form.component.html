@@ -1,0 +1,66 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Cadastro de serviço</h1>
+</div>
+<form #form="ngForm" (submit)="onSubmit()">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success" role="alert" *ngIf="success">
+                Serviço salvo com sucesso!
+            </div>
+            <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
+                {{ erro }}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Cliente: </label>
+                <select class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="servico.idCliente">
+                    <option value="">Selecione um cliente</option>
+                    <option *ngFor="let cliente of clientes" [ngValue]="cliente.id">
+                        {{ cliente.nome }}
+                    </option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Descrição:</label>
+                <input class="form-control" [(ngModel)]="servico.descricao" type="text" name="descricao" id="inputDescricao">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Data:</label>
+                <input class="form-control" [(ngModel)]="servico.data" type="text" name="data" id="inputData">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Preço:</label>
+                <input class="form-control" [(ngModel)]="servico.preco" type="text" name="preco" id="inputPreco">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <button type="button" routerLink="/servico/listar" class="btn btn-secondary" >
+                <i class="fa fa-arrow-left mr-1"></i> Voltar
+            </button>
+            <button type="submit" class="btn btn-success">
+               <i class="fa fa-save mr-1"></i> Salvar
+            </button>
+        </div>
+    </div>
+
+</form>
