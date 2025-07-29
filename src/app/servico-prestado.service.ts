@@ -18,7 +18,7 @@ export class ServicoPrestadoService {
     return this.http.post<ServicoPrestado>(`${this.apiURL}/salvar`, servicoPrestado);
   }
 
-  buscar (nome: string, mes: number) : Observable<ServicoPrestadoBusca> {
+  buscar (nome: string, mes: number) : Observable<ServicoPrestadoBusca[]> {
     const httpParams = new HttpParams()
     .set("nome", nome)
     .set("mes", mes ? mes.toString() : '');
